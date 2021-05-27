@@ -1,0 +1,69 @@
+prefixes:
+  ex: http://www.example.org/btp_ontology/individual/
+  schema: http://www.semanticweb.org/btp/clinical/ontology/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+
+mapping:
+  person_drug:
+    sources:
+      - ['drug_transformed.csv~csv']
+    s: ex:patient_$(person_id)
+    po:
+      - p: schema:drug_administered
+        o:
+          value: ex:drugExposureID_$(drug_exposure_id)
+          type: iri
+  
+  
+  drug_individual:
+    sources:
+      - ['drug_transformed.csv~csv']
+    s: ex:drugExposureID_$(drug_exposure_id)
+    po: 
+      - [a, schema:IndDrug]
+      - p: schema:drugType
+        o:
+          value: ex:drugConceptID_$(drug_concept_id)
+          type: iri
+      - p: schema:drug_adm_start
+        o:
+          value: $(drug_exposure_start_date)
+          datatype: xsd:datetime
+      - p: schema:date_adm_end
+        o:
+          value: $(drug_exposure_end_date)
+          datatype: xsd:datetime
+      - p: schema:doseUnit
+        o:
+          value: $(dose_unit_source_value)
+
+      - p: schema:patientDosage
+        o:
+          value: $(quantity)
+          datatype: xsd:float
+      - p: schema:routeOfAdministration
+        o:
+          value: $(route_source_value)
+          datatype: xsd:str
+
+  drug_curr:
+    sources:
+      - ['drug_transformed.csv~csv']
+    s: ex:drugConceptID_$(drug_concept_id)
+    po: 
+      - [a, schema:Drug]
+      - p: schema:snomed_id
+        o:
+          value: $(drug_concept_id)
+      - p: rdfs:label
+        o:
+          value: $(drug_name)
+      
+    
+
+
+      
+
+
+  
