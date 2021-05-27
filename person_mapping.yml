@@ -1,0 +1,24 @@
+prefixes:
+  ex: http://www.example.org/btp_ontology/individual/
+  schema: http://www.semanticweb.org/btp/clinical/ontology/
+  xsd: http://www.w3.org/2001/XMLSchema#
+
+mappings:
+  person:
+    sources:
+      - ['person_transformed.csv~csv']
+    s: ex:patient_$(person_id)
+    po:
+      - [a, schema:Patient]
+      - [schema:hasPatientID, subject_id_$(person_id)]
+      - [schema:gender, $(gender_source_value)]
+      - p: schema:age
+        o: 
+          value: $(age)
+          datatype: xsd:int
+
+      - p: schema:dateOfBirth
+        o:
+          value: $(birth_datetime)
+          datatype: xsd:datetime
+
