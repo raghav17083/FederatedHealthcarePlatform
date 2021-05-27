@@ -1,0 +1,721 @@
+@prefix : <http://www.semanticweb.org/btp/clinical/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/btp/clinical/ontology/> .
+
+<http://www.semanticweb.org/btp/clinical/ontology/> rdf:type owl:Ontology ;
+                                                     owl:versionIRI <http://www.semanticweb.org/btp/clinical/ontology/> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/btp/clinical/ontology/admittedIn
+:admittedIn rdf:type owl:ObjectProperty ;
+            rdfs:domain :Patient ;
+            rdfs:range :Facility .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/city
+:city rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf :inPlace .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/cityStats
+:cityStats rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasStatistics ;
+           rdfs:domain :City ;
+           rdfs:range :CityStatistics .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/coWorker
+:coWorker rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasRelations .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/conditionType
+:conditionType rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :isOfType ;
+               rdfs:domain :IndividualCondition ;
+               rdfs:range :Condition .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/conditonalSymptom
+:conditonalSymptom rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain :Condition ;
+                   rdfs:range :Symptom .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/country
+:country rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :inPlace .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/countryStats
+:countryStats rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasStatistics ;
+              rdfs:domain :Country ;
+              rdfs:range :CountryStatistics .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/detected_in
+:detected_in rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :admittedIn .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/district
+:district rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :inPlace .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/drugType
+:drugType rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :isOfType ;
+          rdfs:domain :IndDrug ;
+          rdfs:range :Drug .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/drug_administered
+:drug_administered rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasDiagnosis ;
+                   rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+                   rdfs:range :IndDrug .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/hasComorbidity
+:hasComorbidity rdf:type owl:ObjectProperty ;
+                rdfs:domain :Patient ;
+                rdfs:range :Comorbidity .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/hasCondition
+:hasCondition rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+              rdfs:range :IndividualCondition .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/hasDiagnosis
+:hasDiagnosis rdf:type owl:ObjectProperty ;
+              rdfs:domain :Patient ;
+              rdfs:range :Diagnosis .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/hasFamily
+:hasFamily rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasRelations ;
+           rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+           rdfs:range <http://xmlns.com/foaf/0.1/Person> .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/hasGender
+:hasGender rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+           rdfs:range :Gender .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/hasRelations
+:hasRelations rdf:type owl:ObjectProperty ;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+              rdfs:range <http://xmlns.com/foaf/0.1/Person> .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/hasStatistics
+:hasStatistics rdf:type owl:ObjectProperty ;
+               rdfs:domain :Place ;
+               rdfs:range :Statistics .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/inPlace
+:inPlace rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/isOfType
+:isOfType rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/locatedIn
+:locatedIn rdf:type owl:ObjectProperty ;
+           rdfs:domain <http://xmlns.com/foaf/0.1/Organization> ;
+           rdfs:range :Place .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/nationality
+:nationality rdf:type owl:ObjectProperty ;
+             rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+             rdfs:range :Country .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/state
+:state rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf :inPlace .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/stateStats
+:stateStats rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :hasStatistics ;
+            rdfs:domain :State ;
+            rdfs:range :StateStatistics .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/symptom
+:symptom rdf:type owl:ObjectProperty ;
+         rdfs:domain :Patient .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/travelFrom
+:travelFrom rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :travelHistory ;
+            rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+            rdfs:range :Place .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/travelHistory
+:travelHistory rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/travelTo
+:travelTo rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :travelHistory .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Chronic_binary
+:Chronic_binary rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain <http://xmlns.com/foaf/0.1/Person> .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/CovidBool
+:CovidBool rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+           rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/CovidTestDone
+:CovidTestDone rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/DiagRepLab_code
+:DiagRepLab_code rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :diagnostic_report .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/DiagRepLab_conclusion
+:DiagRepLab_conclusion rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :diagnostic_report .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/DiagRepLab_display
+:DiagRepLab_display rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :diagnostic_report .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/DiagRepLab_id
+:DiagRepLab_id rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :diagnostic_report .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/DiagRepLab_result
+:DiagRepLab_result rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :diagnostic_report .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/DiagRepLab_resultsInterpreter
+:DiagRepLab_resultsInterpreter rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf :diagnostic_report .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/DiagRepLab_status
+:DiagRepLab_status rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :diagnostic_report .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Entrydate
+:Entrydate rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :ndhm_compliant_mandatory .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/ID
+:ID rdf:type owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/SNOMED_CID
+:SNOMED_CID rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :ID .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/additional_notes
+:additional_notes rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :information .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/address
+:address rdf:type owl:DatatypeProperty ;
+         rdfs:domain <http://xmlns.com/foaf/0.1/Agent> ,
+                     <http://xmlns.com/foaf/0.1/Person> ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/admittedOn
+:admittedOn rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :date ;
+            rdfs:domain :Patient ;
+            rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/age
+:age rdf:type owl:DatatypeProperty ;
+     rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+     rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/beds
+:beds rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf :statistics ;
+      rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/conditionID
+:conditionID rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :ID ;
+             rdfs:domain :Condition .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/covidPositiveOn
+:covidPositiveOn rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :date ;
+                 rdfs:domain :PatientWithCovid ;
+                 rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/date
+:date rdf:type owl:DatatypeProperty ;
+      rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/dateOfAdmission
+:dateOfAdmission rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :date .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/dateOfBirth
+:dateOfBirth rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :date .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/dateOfDeath
+:dateOfDeath rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :date .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/dateOfOffset
+:dateOfOffset rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :date .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/dateOfOnset
+:dateOfOnset rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :date .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/diagnosedOn
+:diagnosedOn rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :date ;
+             rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/diagnostic_report
+:diagnostic_report rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :ndhm_compliant_mandatory .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/doseUnit
+:doseUnit rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/drug_adm_end
+:drug_adm_end rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :date .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/drug_adm_start
+:drug_adm_start rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :date .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/ethnicityID
+:ethnicityID rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :patient_meta_ID .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/gender
+:gender rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/hasID
+:hasID rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf :ID ;
+       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/hasPatientID
+:hasPatientID rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :hasID .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/heartRate
+:heartRate rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Diagnosis ;
+           rdfs:range xsd:decimal .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/hospital_id
+:hospital_id rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :ndhm_compliant_mandatory .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/hospital_name
+:hospital_name rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :ndhm_compliant_mandatory .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/hospital_resource_id
+:hospital_resource_id rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :ndhm_compliant_mandatory .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/icd_id
+:icd_id rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf :ID .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/information
+:information rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/label
+:label rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/locationID
+:locationID rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :ID .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/medication_reference
+:medication_reference rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :prescription_record .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/medication_resource_id
+:medication_resource_id rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :prescription_record .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/medreqAuthoredOnDate
+:medreqAuthoredOnDate rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :prescription_record .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/medreqCode
+:medreqCode rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :prescription_record .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/medreqDisplay
+:medreqDisplay rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :prescription_record .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/medreqRequester
+:medreqRequester rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :prescription_record .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/medreqSystem
+:medreqSystem rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :prescription_record .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/medreq_intent
+:medreq_intent rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :prescription_record .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/medreq_status
+:medreq_status rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :prescription_record .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/ndhm_compliant_mandatory
+:ndhm_compliant_mandatory rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf owl:topDataProperty ;
+                          rdfs:domain :Patient .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/no_of_active_cases
+:no_of_active_cases rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :statistics .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/no_of_recovered_cases
+:no_of_recovered_cases rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :statistics .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/patientDosage
+:patientDosage rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :prescription_record .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/patient_Health_id
+:patient_Health_id rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :ndhm_compliant_mandatory .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/patient_meta_ID
+:patient_meta_ID rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :ID .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/patient_resource_id
+:patient_resource_id rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf :ndhm_compliant_mandatory .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/prescription_record
+:prescription_record rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf :ndhm_compliant_mandatory .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/raceID
+:raceID rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf :patient_meta_ID .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/releasedOn
+:releasedOn rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :date ;
+            rdfs:domain :Patient ;
+            rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/resources
+:resources rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :statistics ;
+           rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/routeOfAdministration
+:routeOfAdministration rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/snomed_id
+:snomed_id rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :ID .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/source_id
+:source_id rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :ID .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/source_info
+:source_info rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/statistics
+:statistics rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Place .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/symptom_notes
+:symptom_notes rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :information .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/temperature
+:temperature rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Diagnosis ;
+             rdfs:range xsd:decimal .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/travel_notes
+:travel_notes rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :information .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/vaccines_administered
+:vaccines_administered rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :statistics .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/btp/clinical/ontology/COVID-DedicatedFacility
+:COVID-DedicatedFacility rdf:type owl:Class ;
+                         rdfs:subClassOf :Facility .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/City
+:City rdf:type owl:Class ;
+      rdfs:subClassOf :Place .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/CityStatistics
+:CityStatistics rdf:type owl:Class ;
+                rdfs:subClassOf :Statistics .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Comorbidity
+:Comorbidity rdf:type owl:Class ;
+             rdfs:subClassOf :Conditions .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Condition
+:Condition rdf:type owl:Class ;
+           rdfs:subClassOf :Conditions .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Conditions
+:Conditions rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Country
+:Country rdf:type owl:Class ;
+         rdfs:subClassOf :Place .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/CountryStatistics
+:CountryStatistics rdf:type owl:Class ;
+                   rdfs:subClassOf :Statistics .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Diagnosis
+:Diagnosis rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/District
+:District rdf:type owl:Class ;
+          rdfs:subClassOf :Place .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/DoseUnit
+:DoseUnit rdf:type owl:Class ;
+          rdfs:subClassOf :GeneralDiagnosis .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Drug
+:Drug rdf:type owl:Class ;
+      rdfs:subClassOf :GeneralDiagnosis .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Facility
+:Facility rdf:type owl:Class ;
+          rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization> .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Gender
+:Gender rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/GeneralDiagnosis
+:GeneralDiagnosis rdf:type owl:Class ;
+                  rdfs:subClassOf :Diagnosis .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Hospital
+:Hospital rdf:type owl:Class ;
+          rdfs:subClassOf :Facility .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/IndDrug
+:IndDrug rdf:type owl:Class ;
+         rdfs:subClassOf :GeneralDiagnosis .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/IndividualCondition
+:IndividualCondition rdf:type owl:Class ;
+                     rdfs:subClassOf :Conditions .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Patient
+:Patient rdf:type owl:Class ;
+         rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ;
+         rdfs:comment "Patient Available as unique patient ID like adhaar number." .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/PatientWithCovid
+:PatientWithCovid rdf:type owl:Class ;
+                  rdfs:subClassOf :Patient .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Place
+:Place rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/RouteOfAdmin
+:RouteOfAdmin rdf:type owl:Class ;
+              rdfs:subClassOf :GeneralDiagnosis .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/State
+:State rdf:type owl:Class ;
+       rdfs:subClassOf :Place .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/StateStatistics
+:StateStatistics rdf:type owl:Class ;
+                 rdfs:subClassOf :Statistics .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Statistics
+:Statistics rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/btp/clinical/ontology/Symptom
+:Symptom rdf:type owl:Class ;
+         rdfs:subClassOf :Conditions .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Organization
+<http://xmlns.com/foaf/0.1/Organization> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+<http://xmlns.com/foaf/0.1/Person> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
